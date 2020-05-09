@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gdg_uyo_1/view_models/moviesearch_view_model.dart';
-import 'package:gdg_uyo_1/view_models/now_playing_view_model.dart';
 import 'package:gdg_uyo_1/view_models/popular_view_model.dart';
 import 'package:gdg_uyo_1/view_models/top_rated_view_model.dart';
 import 'package:gdg_uyo_1/view_models/upcoming_view_model.dart';
 import 'package:gdg_uyo_1/views/d_screen.dart';
-import 'package:gdg_uyo_1/views/now_playing.dart';
 import 'package:gdg_uyo_1/views/popular_screen.dart';
 import 'package:gdg_uyo_1/views/top_rated_screen.dart';
 import 'package:gdg_uyo_1/views/upcoming_screen.dart';
@@ -25,9 +23,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => GetSearch(), 
             child: DScreen(),),
-          ChangeNotifierProvider(
-            create: (context) => GetPlaying(),
-           child: NowShowing(),),
+          // ChangeNotifierProvider(
+          //   create: (context) => GetPlaying(),
+          //  child: NowShowing(),),
           ChangeNotifierProvider(
             create: (context) => GetUpcoming(), 
             child: UPCS(),),
