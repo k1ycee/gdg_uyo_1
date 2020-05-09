@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.1
-  provider: any
+  provider: 
   provider_architecture: ^1.1.1+1
 
 

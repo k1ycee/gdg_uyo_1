@@ -4,37 +4,70 @@ import 'package:gdg_uyo_1/models/upcoming.dart';
 
 class GetUpcoming extends ChangeNotifier{
 
-  UpcomingViewModel upcom = UpcomingViewModel();
+  List<UpcomingViewModel> upcom = List<UpcomingViewModel>();
 
   Future<void> upComing()async{
     final upc = await MovieProvider().comingSoon();
-    this.upcom = UpcomingViewModel(upcoming: upc);
+    this.upcom = upc.map((ups) => UpcomingViewModel(upcoming: ups)).toList();
     notifyListeners();
   }
 }
 
 
 class UpcomingViewModel{
-  final Upcoming upcoming;
+  final UpcomingResult upcoming;
   UpcomingViewModel({this.upcoming});
 
-  List get results{
-    return upcoming.results;
+ double get popularity{
+    return this.upcoming.popularity;
   }
 
-  int get page{
-    return upcoming.page;
+  int get voteCnt{
+    return this.upcoming.voteCount;
   }
 
-  int get totalRes{
-    return upcoming.totalResults;
+  bool get vid{
+    return this.upcoming.video;
   }
 
-  int get totalpages{
-    return upcoming.totalPages;
+  String get postaPath{
+    return this.upcoming.posterPath;
   }
 
-  Dates get dates{
-    return upcoming.dates;
-  } 
+  int get id{
+    return this.upcoming.id;
+  }
+
+  bool get adult{
+    return this.upcoming.adult;
+  }
+
+  String get bckDropPath{
+    return this.upcoming.backdropPath;
+  }
+
+  List get genres{
+    return this.upcoming.genreIds;
+  }
+
+  
+  String get originTitle{
+    return this.upcoming.originalTitle;
+  }
+
+  String get title{
+    return this.upcoming.title;
+  }
+
+  double get voteAvg{
+    return this.upcoming.voteAverage;
+  }
+
+  String get overView{
+    return this.upcoming.overview;
+  }
+
+  DateTime get releaseDate{
+    return this.upcoming.releaseDate;
+  }
 }

@@ -1,5 +1,5 @@
 class NowPlaying {
-    final List<Result> results;
+    final List<NowPlayingResult> results;
     final int page;
     final int totalResults;
     final Dates dates;
@@ -14,19 +14,19 @@ class NowPlaying {
     });
 
     factory NowPlaying.fromJson(Map<String, dynamic> json) => NowPlaying(
-        results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
-        page: json["page"],
-        totalResults: json["total_results"],
-        dates: Dates.fromJson(json["dates"]),
-        totalPages: json["total_pages"],
+        results: json["results"] == null ? null : List<NowPlayingResult>.from(json["results"].map((x) => NowPlayingResult.fromJson(x))),
+        page: json["page"] == null ? null : json["page"],
+        totalResults: json["total_results"] == null ? null : json["total_results"],
+        dates: json["dates"] == null ? null : Dates.fromJson(json["dates"]),
+        totalPages: json["total_pages"] == null ? null : json["total_pages"],
     );
 
     Map<String, dynamic> toJson() => {
-        "results": List<dynamic>.from(results.map((x) => x.toJson())),
-        "page": page,
-        "total_results": totalResults,
-        "dates": dates.toJson(),
-        "total_pages": totalPages,
+        "results": results == null ? null : List<dynamic>.from(results.map((x) => x.toJson())),
+        "page": page == null ? null : page,
+        "total_results": totalResults == null ? null : totalResults,
+        "dates": dates == null ? null : dates.toJson(),
+        "total_pages": totalPages == null ? null : totalPages,
     };
 }
 
@@ -40,17 +40,17 @@ class Dates {
     });
 
     factory Dates.fromJson(Map<String, dynamic> json) => Dates(
-        maximum: DateTime.parse(json["maximum"]),
-        minimum: DateTime.parse(json["minimum"]),
+        maximum: json["maximum"] == null ? null : DateTime.parse(json["maximum"]),
+        minimum: json["minimum"] == null ? null : DateTime.parse(json["minimum"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "maximum": "${maximum.year.toString().padLeft(4, '0')}-${maximum.month.toString().padLeft(2, '0')}-${maximum.day.toString().padLeft(2, '0')}",
-        "minimum": "${minimum.year.toString().padLeft(4, '0')}-${minimum.month.toString().padLeft(2, '0')}-${minimum.day.toString().padLeft(2, '0')}",
+        "maximum": maximum == null ? null : "${maximum.year.toString().padLeft(4, '0')}-${maximum.month.toString().padLeft(2, '0')}-${maximum.day.toString().padLeft(2, '0')}",
+        "minimum": minimum == null ? null : "${minimum.year.toString().padLeft(4, '0')}-${minimum.month.toString().padLeft(2, '0')}-${minimum.day.toString().padLeft(2, '0')}",
     };
 }
 
-class Result {
+class NowPlayingResult {
     final double popularity;
     final int voteCount;
     final bool video;
@@ -66,7 +66,7 @@ class Result {
     final String overview;
     final DateTime releaseDate;
 
-    Result({
+    NowPlayingResult({
         this.popularity,
         this.voteCount,
         this.video,
@@ -83,46 +83,46 @@ class Result {
         this.releaseDate,
     });
 
-    factory Result.fromJson(Map<String, dynamic> json) => Result(
-        popularity: json["popularity"].toDouble(),
-        voteCount: json["vote_count"],
-        video: json["video"],
+    factory NowPlayingResult.fromJson(Map<String, dynamic> json) => NowPlayingResult(
+        popularity: json["popularity"] == null ? null : json["popularity"].toDouble(),
+        voteCount: json["vote_count"] == null ? null : json["vote_count"],
+        video: json["video"] == null ? null : json["video"],
         posterPath: json["poster_path"] == null ? null : json["poster_path"],
-        id: json["id"],
-        adult: json["adult"],
+        id: json["id"] == null ? null : json["id"],
+        adult: json["adult"] == null ? null : json["adult"],
         backdropPath: json["backdrop_path"] == null ? null : json["backdrop_path"],
-        originalLanguage: originalLanguageValues.map[json["original_language"]],
-        originalTitle: json["original_title"],
-        genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
-        title: json["title"],
-        voteAverage: json["vote_average"].toDouble(),
-        overview: json["overview"],
-        releaseDate: DateTime.parse(json["release_date"]),
+        originalLanguage: json["original_language"] == null ? null : originalLanguageValues.map[json["original_language"]],
+        originalTitle: json["original_title"] == null ? null : json["original_title"],
+        genreIds: json["genre_ids"] == null ? null : List<int>.from(json["genre_ids"].map((x) => x)),
+        title: json["title"] == null ? null : json["title"],
+        voteAverage: json["vote_average"] == null ? null : json["vote_average"].toDouble(),
+        overview: json["overview"] == null ? null : json["overview"],
+        releaseDate: json["release_date"] == null ? null : DateTime.parse(json["release_date"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "popularity": popularity,
-        "vote_count": voteCount,
-        "video": video,
+        "popularity": popularity == null ? null : popularity,
+        "vote_count": voteCount == null ? null : voteCount,
+        "video": video == null ? null : video,
         "poster_path": posterPath == null ? null : posterPath,
-        "id": id,
-        "adult": adult,
+        "id": id == null ? null : id,
+        "adult": adult == null ? null : adult,
         "backdrop_path": backdropPath == null ? null : backdropPath,
-        "original_language": originalLanguageValues.reverse[originalLanguage],
-        "original_title": originalTitle,
-        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
-        "title": title,
-        "vote_average": voteAverage,
-        "overview": overview,
-        "release_date": "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
+        "original_language": originalLanguage == null ? null : originalLanguageValues.reverse[originalLanguage],
+        "original_title": originalTitle == null ? null : originalTitle,
+        "genre_ids": genreIds == null ? null : List<dynamic>.from(genreIds.map((x) => x)),
+        "title": title == null ? null : title,
+        "vote_average": voteAverage == null ? null : voteAverage,
+        "overview": overview == null ? null : overview,
+        "release_date": releaseDate == null ? null : "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
     };
 }
 
-enum OriginalLanguage { EN, KO, ZH, IT }
+enum OriginalLanguage { EN, KO, ES, ZH }
 
 final originalLanguageValues = EnumValues({
     "en": OriginalLanguage.EN,
-    "it": OriginalLanguage.IT,
+    "es": OriginalLanguage.ES,
     "ko": OriginalLanguage.KO,
     "zh": OriginalLanguage.ZH
 });
