@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gdg_uyo_1/view_models/moviesearch_view_model.dart';
-import 'package:gdg_uyo_1/views/now_playing.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 
 class DScreen extends StatelessWidget {
