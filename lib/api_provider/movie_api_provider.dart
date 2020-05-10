@@ -16,7 +16,7 @@ class MovieProvider{
     if(showReq.statusCode == 200){
       final stuff = jsonDecode(showReq.body);
       final Iterable json = stuff["results"];
-      return json.map((shrq) => NowPlayingResult.fromJson(shrq));
+      return json.map((shrq) => NowPlayingResult.fromJson(shrq)).toList();
     }
     else{
       return null;
@@ -28,7 +28,7 @@ class MovieProvider{
     if(paopi.statusCode == 200){
       final stuff = jsonDecode(paopi.body);
       final Iterable json = stuff["results"];
-      return json.map((pao) => PopularResult.fromJson(pao));
+      return json.map((pao) => PopularResult.fromJson(pao)).toList();
     }
     else{
       return null;
@@ -40,7 +40,7 @@ class MovieProvider{
     if(rated.statusCode == 200){
       final stuff = jsonDecode(rated.body);
       final Iterable json = stuff["results"];
-      return json.map((rets) => TopRatedResult.fromJson(rets));
+      return json.map((rets) => TopRatedResult.fromJson(rets)).toList();
     }
     else{
       return null;
@@ -62,7 +62,7 @@ class MovieProvider{
     if(coming.statusCode == 200){
       final stuff = jsonDecode(coming.body);
       final Iterable json = stuff["results"];
-      return json.map((coms) => UpcomingResult.fromJson(coms));
+      return json.map((coms) => UpcomingResult.fromJson(coms)).toList();
     }
     return null;
   }

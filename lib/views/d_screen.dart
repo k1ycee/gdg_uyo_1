@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gdg_uyo_1/view_models/moviesearch_view_model.dart';
 import 'package:gdg_uyo_1/views/now_playing.dart';
+import 'package:gdg_uyo_1/views/popular_screen.dart';
+import 'package:gdg_uyo_1/views/top_rated_screen.dart';
+import 'package:gdg_uyo_1/views/upcoming_screen.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 
 class DScreen extends StatelessWidget {
@@ -8,7 +11,6 @@ class DScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelProvider<GetSearch>.withConsumer(
       viewModelBuilder: () => GetSearch(),
-      onModelReady: (model) => model.serReq("Batman"),
       builder: (context,model,_) => Scaffold(
         appBar: AppBar(
           actions: <Widget>[
@@ -17,23 +19,72 @@ class DScreen extends StatelessWidget {
               onPressed: (){},)
           ],),
         body: Container(
-          alignment: Alignment.topCenter,
-          height: 120,
-          width: 400,
-          child: Row(
+          child: ListView(
               children: <Widget>[
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: model.ser.length,
-                    itemBuilder: (context, index) => Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
-                      height: 100,
-                      width: 100,
-                      child: Image.network('https://image.tmdb.org/t/p/w500${model.ser[index].postaPath}')
-                      )
+                SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text('Now Showing'),
+                ),
+                  Container(
+                  height: 160,
+                  width: 400,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: NowShowing()
+                        ),
+                      ],
                     ),
                   ),
+                SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text('Popular'),
+                ),
+                  Container(
+                  height: 160,
+                  width: 400,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: PopularSC()
+                        ),
+                      ],
+                    ),
+                  ),
+                SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text('Top Rated'),
+                ),
+                  Container(
+                  height: 160,
+                  width: 400,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: TRated()
+                        ),
+                      ],
+                    ),
+                  ),
+                SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text('Upcoming'),
+                ),
+                Container(
+                  height: 160,
+                  width: 400,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: UPCS()
+                        ),
+                      ],
+                    ),
+                  )
                ],
             ),
           ),
