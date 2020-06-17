@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdg_uyo_1/view_models/now_playing_view_model.dart';
+import 'package:gdg_uyo_1/widgets/details_widget.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 
 class NowShowing extends StatelessWidget {
@@ -15,17 +16,29 @@ class NowShowing extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 150,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-                  child: Container(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NowPlayingDetails(
+                        nowPlaying: model.play[index],
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                   height: 150,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),),
-                  child: Image.network('https://image.tmdb.org/t/p/w500${model.play[index].postaPath}'),
+                  width: 100,
+                  child: Image.network(
+                    'https://image.tmdb.org/t/p/w500${model.play[index].backdropPath}',
+                    fit: BoxFit.cover,
                   ),
+                ),
               ),
             );
-          }
+          },
         ),
       ),
     );
