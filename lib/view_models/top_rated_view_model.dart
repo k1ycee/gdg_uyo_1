@@ -4,34 +4,11 @@ import 'package:gdg_uyo_1/models/top_rated_model.dart';
 
 class GetTopRated extends ChangeNotifier{ 
 
-  TopRatedViewModel topRtvm = TopRatedViewModel();
+  List<TopRatedResult> topRtvm = List<TopRatedResult>();
 
   Future<void> topRated()async{
     final tprt = await MovieProvider().tpRated();
-    this.topRtvm = TopRatedViewModel(topRated: tprt);
+    this.topRtvm = tprt;
     notifyListeners();
   }
-}
-
-
-class TopRatedViewModel{
-  final TopRated topRated;
-  TopRatedViewModel({this.topRated});
-
-  List get results{
-    return topRated.results;
-  }
-
-  int get page{
-    return topRated.page;
-  }
-
-  int get totalPage{
-    return topRated.totalPages;
-  }
-
-  int get totalRes{
-    return topRated.totalResults;
-  }
-  
 }

@@ -4,37 +4,13 @@ import 'package:gdg_uyo_1/models/upcoming.dart';
 
 class GetUpcoming extends ChangeNotifier{
 
-  UpcomingViewModel upcom = UpcomingViewModel();
+  List<UpcomingResult> upcom = List<UpcomingResult>();
 
   Future<void> upComing()async{
     final upc = await MovieProvider().comingSoon();
-    this.upcom = UpcomingViewModel(upcoming: upc);
+    this.upcom = upc;
     notifyListeners();
   }
 }
 
 
-class UpcomingViewModel{
-  final Upcoming upcoming;
-  UpcomingViewModel({this.upcoming});
-
-  List get results{
-    return upcoming.results;
-  }
-
-  int get page{
-    return upcoming.page;
-  }
-
-  int get totalRes{
-    return upcoming.totalResults;
-  }
-
-  int get totalpages{
-    return upcoming.totalPages;
-  }
-
-  Dates get dates{
-    return upcoming.dates;
-  } 
-}
