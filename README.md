@@ -17,5 +17,5 @@ This is a simple movie app built with flutter and the MVVM architecture
 
 ## Screenshots
 
-![Main](Screenshots/flutter_01.png)
-![Detail](Screenshots/flutter_02.png)
+![Main](Screenshots/flutter_01.png) ![Detail](Screenshots/flutter_02.png)
+
